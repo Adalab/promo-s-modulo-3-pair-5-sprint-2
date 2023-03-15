@@ -2,8 +2,8 @@
 function Dummy(props) {
     //numberOfErrors
     return (
-        <section className="dummy error-0" >
-            {/*</section><section className={`dummy error-${getNumberOfErrors()}`}>*/}
+        <section className={`dummy error-${props.numberOfErrors}`} >
+           
             <span className='error-13 eye'></span>
             <span className='error-12 eye'></span>
             <span className='error-11 line'></span>
