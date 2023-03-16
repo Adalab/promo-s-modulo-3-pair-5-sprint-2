@@ -3,6 +3,9 @@ import Header from './Header';
 import Dummy from './Dummy';
 import SolutionLetters from './SolutionLetters';
 import Form from './Form';
+import Footer from './Footer';
+import Instruction from './Instruction';
+import { Route, Routes } from 'react-router-dom';
 // api
 import getWordFromApi from '../services/api';
 // styles
@@ -75,8 +78,14 @@ function App() {
           />
         </section>
         <Dummy 
-        numberOfErrors={getNumberOfErrors()}/>
+          numberOfErrors={getNumberOfErrors()} />
+        <Routes>
+          <Route path ='/instructions' element = {<Instruction/>}/>
+          {/*<Route path='/' element = {<Homepage/>}/>*/}
+        </Routes>
       </main>
+      <Footer />
+      
     </div>
   );
 }

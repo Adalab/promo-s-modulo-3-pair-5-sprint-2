@@ -1,19 +1,19 @@
 import '../styles/Form.scss';
 
 function Form (props) {
-    const handleKeyDown = ev => {
+    const handleKeyDown = (ev) => {
         // Sabrías decir para qué es esta línea
         ev.target.setSelectionRange(0, 1);
       };
 
-      const handleChange = ev => {
+      const handleChange = (ev) => {
         let re = /^[a-zA-ZñÑá-úÁ-Ú´]$/; //add regular pattern 
         if (re.test(ev.target.value) || ev.target.value === '') {
           props.handleLastLetter(ev.target.value);
         }
       };
     
-    const handleSubmit = ev => {
+    const handleSubmit = (ev) => {
         ev.preventDefault();
       };
     return (
