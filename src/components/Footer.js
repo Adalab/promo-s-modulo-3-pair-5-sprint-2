@@ -6,7 +6,7 @@ function Footer() {
   <nav>
     <ul>
       <li className="footer__menu-item">
-        <NavLink className="footer__menu-link" to="#/">A jugar </NavLink>
+        <NavLink className="footer__menu-link" to="/">A jugar </NavLink>
       </li>
       <li className="footer__menu-item">
         <NavLink className="footer__menu-link active" to="instructions">¿Cómo se juega?</NavLink>

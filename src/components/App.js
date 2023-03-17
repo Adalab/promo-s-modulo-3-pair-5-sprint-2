@@ -1,24 +1,25 @@
-import { useEffect, useState } from 'react';
-import Header from './Header';
-import Dummy from './Dummy';
-import SolutionLetters from './SolutionLetters';
-import Form from './Form';
-import Footer from './Footer';
-import Instruction from './Instruction';
-import { Route, Routes } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import Header from "./Header";
+import Dummy from "./Dummy";
+import SolutionLetters from "./SolutionLetters";
+import Form from "./Form";
+import Footer from "./Footer";
+import Instruction from "./Instruction";
+import { Route, Routes } from "react-router-dom";
 // api
-import getWordFromApi from '../services/api';
+import getWordFromApi from "../services/api";
 // styles
-import '../styles/App.scss';
-import '../styles/Dummy.scss';
-import '../styles/Letters.scss';
-import '../styles/Form.scss';
-import '../styles/Header.scss';
+import "../styles/App.scss";
+import "../styles/Dummy.scss";
+import "../styles/Letters.scss";
+import "../styles/Form.scss";
+import "../styles/Header.scss";
+import Options from "./Options";
 
 function App() {
-  const [word, setWord] = useState('');
+  const [word, setWord] = useState("");
   const [userLetters, setUserLetters] = useState([]);
-  const [lastLetter, setLastLetter] = useState('');
+  const [lastLetter, setLastLetter] = useState("");
 
   useEffect(() => {
     getWordFromApi().then((word) => {
@@ -42,7 +43,7 @@ function App() {
     );
     return errorLetters.map((letter, index) => {
       return (
-        <li key={index} className='letter'>
+        <li key={index} className="letter">
           {letter}
         </li>
       );
@@ -60,32 +61,36 @@ function App() {
   };
 
   return (
-    <div className='page'>
-      <Header/>
-      <main className='main'>
-        <section>
-          <SolutionLetters 
-          word={word} 
-          userLetters={userLetters}/>
-
-          <div className='error'>
-            <h2 className='title'>Letras falladas:</h2>
-            <ul className='letters'>{renderErrorLetters()}</ul>
-          </div>
-          <Form
-          lastLetter={lastLetter}
-          handleLastLetter={handleLastLetter}
-          />
-        </section>
-        <Dummy 
-          numberOfErrors={getNumberOfErrors()} />
+    <div className="page">
+      <Header />
+      <main className="main">
         <Routes>
-          <Route path ='/instructions' element = {<Instruction/>}/>
-          {/*<Route path='/' element = {<Homepage/>}/>*/}
+          <Route path="/instructions" element={<Instruction />} />
+          <Route
+            path="/"
+            element={
+              <>
+                {" "}
+                <section>
+                  <SolutionLetters word={word} userLetters={userLetters} />
+
+                  <div className="error">
+                    <h2 className="title">Letras falladas:</h2>
+                    <ul className="letters">{renderErrorLetters()}</ul>
+                  </div>
+                  <Form
+                    lastLetter={lastLetter}
+                    handleLastLetter={handleLastLetter}
+                  />
+                </section>
+                <Dummy numberOfErrors={getNumberOfErrors()} />
+              </>
+            }
+          />
+          <Route path="/options" element={<Options/>}/>
         </Routes>
       </main>
       <Footer />
-      
     </div>
   );
 }
