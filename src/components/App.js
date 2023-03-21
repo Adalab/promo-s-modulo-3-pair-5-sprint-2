@@ -60,6 +60,14 @@ function App() {
     }
   };
 
+  const handleChange = (value) => {
+    value= value.toLocaleLowerCase();
+    setWord(value);
+    setLastLetter('');
+    setUserLetters(['']);
+
+  }
+
   return (
     <div className="page">
       <Header />
@@ -87,7 +95,7 @@ function App() {
               </>
             }
           />
-          <Route path="/options" element={<Options/>}/>
+          <Route path="/options" element={<Options handleChange={handleChange} word={word} />}/>
         </Routes>
       </main>
       <Footer />
